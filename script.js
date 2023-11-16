@@ -1,48 +1,58 @@
-let displayValue;
+let display = document.querySelector('.lcd-display');
+
+// let displayValue;
 let firstNumber;
 let operator;
 let secondNumber;
 
-// Populate the display when a button is clicked
-document.querySelectorAll('.btn-num, .btn-sym')
+// Populate the display when a number button is clicked
+document.querySelectorAll('.btn-num')
 .forEach((button) => {
   button.addEventListener('click', () => {
-    document.querySelector('.lcd-display').textContent += button.textContent;
-    displayValue = document.querySelector('.lcd-display').textContent;
-    console.log(displayValue);
+    display.textContent += button.textContent;
   })
 });
 
-// Clear the display when 'AC' clicked
-document.querySelector('.btn-ac').addEventListener('click', () => {
-  document.querySelector('.lcd-display').textContent = '';
-  displayValue = document.querySelector('.lcd-display').textContent;
-  console.log(displayValue);
+// Store first number, operator value when operator button is clicked, clear display for second number
+document.querySelectorAll('.btn-sym')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      firstNumber = +display.textContent;
+      operator = button.textContent;
+      display.textContent = '';
+    })
+  })
+
+// Get second number value when '=' is clicked, calculate the result, round it to 3 decimals and display it
+document.querySelector('.btn-operate').addEventListener('click', () =>{
+  secondNumber = +display.textContent;
+  display.textContent = Math.round(operate(operator, firstNumber, secondNumber)*1000)/1000
 })
 
-// Calculate the input when '=' is clicked
-document.querySelector('btn-operate').addEventListener('click', () =>{
-  
+// Clear the values when 'AC' clicked
+document.querySelector('.btn-ac').addEventListener('click', () => {
+  display.textContent = '';
+  firstNumber = undefined;
+  secondNumber = undefined;
+  operator = undefined;
 })
 
 // Operate on numbers, based on operator
-function operate(symbol, a, b) {
-  let result;
-  switch(symbol) {
-    case '+':
-      result = add(a, b);
+function operate(operator, a, b) {
+  switch(operator) {
+    case ' + ':
+      return add(a, b);
       break;
-    case '-':
-      result =substract(a, b);
+    case ' - ':
+      return substract(a, b);
       break;
-    case '*':
-      result = multiply(a, b);
+    case ' * ':
+      return multiply(a, b);
       break;
-    case '/':
-      result =divide(a, b);
+    case ' / ':
+      return divide(a, b);
       break;
   }
-  document.querySelector('.lcd-display').textContent = result;
 }
 
 // Functions for the 4 operators
@@ -59,6 +69,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if (b === 0) return "To Infinity & Beyond"
+  else return a / b;
 }
 
