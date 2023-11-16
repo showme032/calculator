@@ -13,6 +13,13 @@ document.querySelectorAll('.btn-num')
   })
 });
 
+document.querySelector('.btn-dot').addEventListener('click', () => {
+  if (display.textContent.includes('.')) return
+  else {
+    display.textContent += '.';
+  }
+});
+
 // Store first number, operator value when operator button is clicked, clear display for second number
 document.querySelectorAll('.btn-sym')
   .forEach((button) => {
