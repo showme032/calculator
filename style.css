@@ -42,10 +42,8 @@ div.lcd-display {
   font-size: 26px;  
 }
 
-
 .button-row {
   display: flex;
-
 }
 
 button {
@@ -60,6 +58,10 @@ button {
 }
 
 .btn-ac {
+  background-color: #8D98C6;
+}
+
+.btn-operate {
   background-color: #8D98C6;
 }
 

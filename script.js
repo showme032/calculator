@@ -1,6 +1,4 @@
-let display = document.querySelector('.lcd-display');
-
-// let displayValue;
+const display = document.querySelector('.lcd-display');
 let firstNumber;
 let operator;
 let secondNumber;
@@ -13,6 +11,7 @@ document.querySelectorAll('.btn-num')
   })
 });
 
+// Enable decimal separator only if not already entered
 document.querySelector('.btn-dot').addEventListener('click', () => {
   if (display.textContent.includes('.')) return
   else {
@@ -33,7 +32,13 @@ document.querySelectorAll('.btn-sym')
 // Get second number value when '=' is clicked, calculate the result, round it to 3 decimals and display it
 document.querySelector('.btn-operate').addEventListener('click', () =>{
   secondNumber = +display.textContent;
-  display.textContent = Math.round(operate(operator, firstNumber, secondNumber)*1000)/1000
+  
+  let result = operate(operator, firstNumber, secondNumber);
+  if (typeof result == 'number') {
+    result = Math.round(result*1000)/1000;
+  };
+
+  display.textContent = result;
 })
 
 // Clear the values when 'AC' clicked
