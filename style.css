@@ -21,25 +21,41 @@ body {
   display: flex;
 }
 
-div.lcd-display {
+.displays-field {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  border: solid 2px #4D194D;
+  border-radius: 5px;
+  outline: none;
+  height: 70px;
+  width: 218px;
+  margin: 2px;
+  padding: 1px 5px;
+
+  background-color: #065A60;
+
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.lcd-display, .lcd-string {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-  /* display: block;
-  direction: ltr; */
-  width: 218px;
-  height: 70px;
-  margin: 2px;
-  padding: 0px 5px;
+  align-content: flex-end;
+  min-width: 204px;
+  height: 32px;
+  margin: 0px;
+  padding: 0px;
   
-  background-color: #454D66;
+  /* overflow: scroll;
+  scrollbar-width: none; */
+  
+  outline: none;
   color: #FFCC5C;
-  box-sizing: border-box;
-  border: solid 2px #464AAC;
-  border-radius: 5px;
-
   font-family: digiCalc;
-  font-size: 26px;  
+  font-size: 30px;  
 }
 
 .button-row {
@@ -52,17 +68,19 @@ button {
   margin: 2px;
   border-radius: 5px;
   
-  color: #03071E;
+  color: #4D194D;
   font-size: 24px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-ac {
-  background-color: #8D98C6;
+  background-color: #4D194D;
+  color: #FFCC5C;
 }
 
 .btn-operate {
-  background-color: #8D98C6;
+  background-color: #4D194D;
+  color: #FFCC5C;
 }
 
 .btn-sym {
